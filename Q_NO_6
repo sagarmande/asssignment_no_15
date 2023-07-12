@@ -1,0 +1,29 @@
+def evaluate_postfix_expression(expression):
+    stack = []
+    operators = set(['+', '-', '*', '/'])
+
+    for char in expression:
+        if char not in operators:
+            stack.append(int(char))
+        else:
+            operand2 = stack.pop()
+            operand1 = stack.pop()
+
+            if char == '+':
+                result = operand1 + operand2
+            elif char == '-':
+                result = operand1 - operand2
+            elif char == '*':
+                result = operand1 * operand2
+            elif char == '/':
+                result = operand1 / operand2
+
+            stack.append(result)
+
+    return stack.pop()
+expression1 = "231*+9-"
+result1 = evaluate_postfix_expression(expression1)
+print(result1)  # Output: -4
+expression1 = "231*+9-"
+result1 = evaluate_postfix_expression(expression1)
+print(result1)  # Output: -4
