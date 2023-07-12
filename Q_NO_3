@@ -1,0 +1,49 @@
+class Stack:
+    def __init__(self):
+        self.q1 = []
+        self.q2 = []
+
+    def push(self, element):
+        if not self.q1:
+            self.q1.append(element)
+        else:
+            self.q2.append(element)
+
+    def pop(self):
+        if not self.q1 and not self.q2:
+            return None
+
+        if not self.q1:
+            while len(self.q2) > 1:
+                self.q1.append(self.q2.pop(0))
+            return self.q2.pop(0)
+        else:
+            while len(self.q1) > 1:
+                self.q2.append(self.q1.pop(0))
+            return self.q1.pop(0)
+
+    def top(self):
+        if not self.q1 and not self.q2:
+            return None
+
+        if not self.q1:
+            while len(self.q2) > 1:
+                self.q1.append(self.q2.pop(0))
+            top_element = self.q2[0]
+            self.q1.append(self.q2.pop(0))
+        else:
+            while len(self.q1) > 1:
+                self.q2.append(self.q1.pop(0))
+            top_element = self.q1[0]
+            self.q2.append(self.q1.pop(0))
+
+        return top_element
+
+    def isEmpty(self):
+        return not self.q1 and not self.q2
+stack = Stack()
+stack.push(2)
+stack.push(3)
+print(stack.pop())  # Output: 3
+stack.push(4)
+print(stack.pop())  # Output: 4
