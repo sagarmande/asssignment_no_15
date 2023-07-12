@@ -1,0 +1,23 @@
+def reverse_string(s):
+    stack = []
+    for char in s:
+        stack.append(char)
+
+    reversed_string = ''
+    while stack:
+        reversed_string += stack.pop()
+
+    return reversed_string
+def reverse_string(s):
+    stack = []
+    for char in s:
+        stack.append(char)
+
+    reversed_string = ''
+    while stack:
+        reversed_string += stack.pop()
+
+    return reversed_string
+s = "Hello, World!"
+reversed_string = reverse_string(s)
+print(reversed_string)  # Output: "!dlroW ,olleH"
