@@ -1,0 +1,24 @@
+def find_nearest_smaller_numbers(arr):
+    n = len(arr)
+    result = [-1] * n  # Initialize result array with -1
+    stack = []
+
+    # Traverse the array from left to right
+    for i in range(n):
+        # Pop elements from stack while stack is not empty and
+        # the top element is greater than or equal to arr[i]
+        while stack and stack[-1] >= arr[i]:
+            stack.pop()
+
+        # If stack is not empty, the top element is the nearest smaller number
+        if stack:
+            result[i] = stack[-1]
+
+        # Push arr[i] onto the stack
+        stack.append(arr[i])
+
+    return result
+arr1 = [1, 6, 2]
+result1 = find_nearest_smaller_numbers(arr1)
+print(result1)  # Output: [-1, 1, 1]
+
